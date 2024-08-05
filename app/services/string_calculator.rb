@@ -1,6 +1,5 @@
 class StringCalculator
     def add(numbers)
-        debugger
       return 0 if numbers.empty?
   
       delimiter = /,|\n/

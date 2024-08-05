@@ -1,0 +1,37 @@
+<h1>String Calculator</h1>
+
+<%= form_with url: root_path, method: :get, local: true, id: 'calculator-form' do %>
+  <div>
+    <label for="numbers">Enter numbers (comma, newline or custom delimiter):</label>
+    <%= text_field_tag :numbers, params[:numbers], id: 'numbers', placeholder: 'e.g., 1,2,3 or //;\n1;2', rows: 5 %>
+  </div>
+
+  <div>
+    <%= submit_tag 'Calculate' %>
+  </div>
+<% end %>
+
+<% if @result %>
+  <div id="result">
+    <h2>Result: <%= @result %></h2>
+  </div>
+<% elsif @error %>
+  <div id="error">
+    <h2 style="color: red;">Error: <%= @error %></h2>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('calculator-form');
+    form.addEventListener('submit', (event) => {
+      const numbersInput = document.getElementById('numbers').value;
+      
+      // Optional: Client-side validation before form submission
+      if (!numbersInput) {
+        event.preventDefault();
+        alert('Please enter some numbers!');
+      }
+    });
+  });
+</script>
