@@ -1,7 +1,7 @@
 class StringCalculator
     def add(numbers)
       return 0 if numbers.empty?
-  
+      numbers.gsub!(/\\n/, "\n")
       delimiter = /,|\n/
       if numbers.start_with?("//")
         custom_delimiter = numbers[2]
