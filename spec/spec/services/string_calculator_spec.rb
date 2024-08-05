@@ -26,6 +26,12 @@ describe StringCalculator do
       expect(subject.add("//;\n1;2")).to eq(3)
     end
 
-   
+    it 'raises an exception for negative numbers' do
+      expect { subject.add("1,-2,3") }.to raise_error("Negative numbers not allowed: -2")
+    end
+
+    it 'raises an exception with all negative numbers listed' do
+      expect { subject.add("1,-2,-3,4") }.to raise_error("Negative numbers not allowed: -2, -3")
+    end
   end
 end
